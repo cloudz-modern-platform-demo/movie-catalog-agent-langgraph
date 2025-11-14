@@ -1,7 +1,7 @@
 import pytest
 
-from react_agent import graph
-from react_agent.context import Context
+from movie_catalog_agent_langgraph.agents.graph import graph
+from movie_catalog_agent_langgraph.agents.context import Context
 
 pytestmark = pytest.mark.anyio
 

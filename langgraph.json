@@ -2,8 +2,8 @@
   "$schema": "https://langgra.ph/schema.json",
   "dependencies": ["."],
   "graphs": {
-    "movie-catalog-agent": "./src/react_agent/graph.py:graph",
-    "simple-agent": "./src/react_agent/simple_agent.py:graph"
+    "movie-catalog-agent": "./src/movie_catalog_agent_langgraph/agents/graph.py:graph",
+    "simple-agent": "./src/movie_catalog_agent_langgraph/simple_agent/agent.py:graph"
   },
   "env": ".env"
 }

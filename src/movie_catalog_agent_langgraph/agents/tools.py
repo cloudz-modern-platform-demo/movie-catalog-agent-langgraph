@@ -12,7 +12,7 @@ from langchain_mcp_adapters.client import MultiServerMCPClient
 from langchain_tavily import TavilySearch
 from langgraph.runtime import get_runtime
 
-from react_agent.context import Context
+from movie_catalog_agent_langgraph.agents.context import Context
 
 
 async def search(query: str) -> Optional[dict[str, Any]]:

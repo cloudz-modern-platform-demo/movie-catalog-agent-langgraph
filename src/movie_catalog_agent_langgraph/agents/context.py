@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import os
 from dataclasses import dataclass, field, fields
-from typing import Annotated
+from typing import Annotated, Any
 
 from . import prompts
 
@@ -36,6 +36,19 @@ class Context:
         },
     )
 
+    user_id: str = field(
+        default="",
+        metadata={
+            "description": "The user id for the agent's interactions."
+        },
+    )
+    thread_id: str = field(
+        default="",
+        metadata={
+            "description": "The thread id for the agent's interactions."
+        },
+    )
+
     def __post_init__(self) -> None:
         """Fetch env vars for attributes that were not passed as args."""
         for f in fields(self):
@@ -44,3 +57,7 @@ class Context:
 
             if getattr(self, f.name) == f.default:
                 setattr(self, f.name, os.environ.get(f.name.upper(), f.default))
+
+    def model_dump(self) -> dict[str, Any]:
+        """Dump the configuration to a dictionary."""
+        return {f.name: getattr(self, f.name) for f in fields(self) if f.init}

@@ -11,13 +11,14 @@ from typing import Dict, List, Literal, cast
 from langchain_core.messages import AIMessage
 from langchain_core.tools import BaseTool
 from langgraph.graph import StateGraph
+from langgraph.graph.state import CompiledStateGraph
 from langgraph.prebuilt import ToolNode
 from langgraph.runtime import Runtime
 
-from react_agent.context import Context
-from react_agent.state import InputState, State
-from react_agent.tools import mcp_client
-from react_agent.utils import load_chat_model
+from movie_catalog_agent_langgraph.agents.context import Context
+from movie_catalog_agent_langgraph.agents.state import InputState, State
+from movie_catalog_agent_langgraph.agents.tools import mcp_client
+from movie_catalog_agent_langgraph.agents.utils import load_chat_model
 
 # Define the function that calls the model
 
@@ -90,7 +91,7 @@ def route_model_output(state: State) -> Literal["__end__", "tools"]:
     return "tools"
 
 
-async def build_graph():
+async def build_agent() -> CompiledStateGraph:
     """Build the graph."""
     tools = await mcp_client.get_tools()
     # Define a new graph
@@ -123,4 +124,4 @@ async def build_graph():
 
 # Compile the builder into an executable graph
 # Note: This creates the graph at module load time
-graph = asyncio.run(build_graph())
+graph = asyncio.run(build_agent())

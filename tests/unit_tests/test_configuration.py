@@ -1,6 +1,6 @@
 import os
 
-from react_agent.context import Context
+from movie_catalog_agent_langgraph.agents.context import Context
 
 
 def test_context_init() -> None:
