@@ -58,7 +58,7 @@ class MovieCatalogAgentExecutor(AgentExecutor):
         instance = cls(agent, tools, stream_mode)
 
         logger.info(
-            f"LanggraphAgentExecutor initialized {instance.agent.name} with {len(instance.tools)} tools"
+            f"MovieCatalogAgentExecutor initialized {instance.agent.name} with {len(instance.tools)} tools"
         )
 
         return instance
