@@ -19,3 +19,9 @@ cp .env.example .env
 ```
 langgraph dev --port 8201
 ```
+
+
+# Run a2a remote server
+```
+uv run movie-catalog-remote-agent
+```
