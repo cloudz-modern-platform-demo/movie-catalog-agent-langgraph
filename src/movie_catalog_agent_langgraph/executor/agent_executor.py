@@ -217,19 +217,18 @@ class MovieCatalogAgentExecutor(AgentExecutor):
                             ]
                         )
 
-                        logger.debug(
-                            f"Looking up alert information... using tools: {tool_names}"
+                        logger.info(
+                            f"Looking up movie catalog information... using tools: {tool_names}"
                         )
                         yield {
                             "is_task_complete": False,
                             "require_user_input": False,
-                            "content": f"Looking up alert information... using tools: {tool_names}",
+                            "content": f"Looking up movie catalog information... using tools: {tool_names}",
                         }
-                    # for first turn without tool calls or result for user query
                     else:
-                        logger.debug("Processing user query with data from tools")
+                        logger.info(f"{self.agent.name} Task completed")
                         yield {
-                            "is_task_complete": False,
+                            "is_task_complete": True,
                             "require_user_input": False,
                             "content": chunk_message.content,
                         }
@@ -264,12 +263,6 @@ class MovieCatalogAgentExecutor(AgentExecutor):
                         ),
                     }
 
-            logger.info(f"{self.agent.name} Task completed")
-            yield {
-                "is_task_complete": True,
-                "require_user_input": False,
-                "content": "Task completed",
-            }
         elif stream_mode == "messages":
             async for chunk_message, _ in response:
                 # item is a message object (AIMessageChunk, ToolMessage, HumanMessage)

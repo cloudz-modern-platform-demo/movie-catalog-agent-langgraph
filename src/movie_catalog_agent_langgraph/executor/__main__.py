@@ -32,8 +32,8 @@ async def main(host: str, port: int):
         agent_executor = await MovieCatalogAgentExecutor.initialize(
             agent=movie_catalog_agent,
             tools=await mcp_client.get_tools(),
-            stream_mode="messages",
-            # stream_mode="values",
+            # stream_mode="messages",
+            stream_mode="values",
         )
         capabilities = AgentCapabilities(
             streaming=True if agent_executor.stream_mode == "messages" else False,
