@@ -10,6 +10,10 @@ uv sync
 uv pip install -e .
 ```
 
+# Setup LLM API Key
+```
+cp .env.example .env
+```
 
 # Run langgraph agent
 ```

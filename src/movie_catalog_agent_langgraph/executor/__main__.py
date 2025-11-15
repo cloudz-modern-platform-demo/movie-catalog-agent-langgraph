@@ -81,7 +81,7 @@ async def main(host: str, port: int):
         sys.exit(1)
 
 
-if __name__ == "__main__":
+def run():
     host = "0.0.0.0"
     port = 8300
     server = asyncio.run(main(host=host, port=port))
