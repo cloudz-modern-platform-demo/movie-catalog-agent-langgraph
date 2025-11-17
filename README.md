@@ -17,7 +17,7 @@ cp .env.example .env
 
 # Run langgraph agent
 ```
-langgraph dev --port 8201
+langgraph dev --port 8201 --no-browser
 ```
 
 
