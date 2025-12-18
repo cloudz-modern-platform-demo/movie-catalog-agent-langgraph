@@ -15,9 +15,11 @@ from a2a.types import (
 )
 from dotenv import load_dotenv
 
-from movie_catalog_agent_langgraph.executor.agent_executor import MovieCatalogAgentExecutor
 from movie_catalog_agent_langgraph.agents.graph import graph as movie_catalog_agent
 from movie_catalog_agent_langgraph.agents.tools import mcp_client
+from movie_catalog_agent_langgraph.executor.agent_executor import (
+    MovieCatalogAgentExecutor,
+)
 
 load_dotenv()
 
@@ -25,6 +27,7 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 SUPPORTED_CONTENT_TYPES = ["text", "text/plain"]
+
 
 async def main(host: str, port: int):
     """Run the main function."""
