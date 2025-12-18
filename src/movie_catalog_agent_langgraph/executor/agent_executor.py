@@ -21,7 +21,12 @@ from a2a.utils import (
     new_task,
 )
 from a2a.utils.errors import ServerError
-from langchain_core.messages import AIMessageChunk, HumanMessage, ToolMessage, ToolMessageChunk
+from langchain_core.messages import (
+    AIMessageChunk,
+    HumanMessage,
+    ToolMessage,
+    ToolMessageChunk,
+)
 from langchain_core.runnables.config import RunnableConfig
 from langchain_core.tools import BaseTool
 from langchain_mcp_adapters.client import AIMessage
@@ -201,7 +206,9 @@ class MovieCatalogAgentExecutor(AgentExecutor):
             thread_id=context_id,
         )
 
-        response = self.agent.astream(inputs, config, context=context, stream_mode=stream_mode)
+        response = self.agent.astream(
+            inputs, config, context=context, stream_mode=stream_mode
+        )
 
         if stream_mode == "values":
             async for chunk_message in response:
